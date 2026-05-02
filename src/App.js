@@ -17,38 +17,81 @@ const App = () => {
     setFirstNumber('0')
   };
 
-
+  //FUNCTION PARA ADICIONAR O NUMERO AO INPUT
   const handleAddNumber = (num) => {
       setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`)
   }
 
+  //FUNCTION SOMA
   const handleSumNumbers = () => {
-
     if(firstNumber === '0') {
         setFirstNumber(String(currentNumber));
-        setCurrentNumber('0');
+        setCurrentNumber('');
          setOperation('+');
     } else {
       const sum = Number(firstNumber) + Number(currentNumber);
-      setCurrentNumber(String(sum))
+      setCurrentNumber(String(sum));
       setOperation('');
     }
   }
 
+  //FUNCTION SUBTRAIR
   const handleMinusNumbers = () => {
-
     if(firstNumber === '0') {
         setFirstNumber(String(currentNumber));
-        setCurrentNumber('0');
-         setOperation('-');
+        setCurrentNumber('');
+        setOperation('-');
     } else {
       const minus = Number(firstNumber) - Number(currentNumber);
-      setCurrentNumber(String(minus))
+      setCurrentNumber(String(minus));
+    }
+  }
+  
+  // FUNCTION MULTIPLICAR
+  const handleMultiplcationNumbers = () => {
+    if(firstNumber === '0') {
+      setFirstNumber(String(currentNumber)); //SALVA O PROMEIRO NUMERO
+      setCurrentNumber(''); // LIMPA PARA DIGITAR O PROXIMO
+      setOperation('x');
+    } else {
+      const multiplicacao = Number(firstNumber) * Number(currentNumber);
+      setCurrentNumber(String(multiplicacao));
+      setFirstNumber('0');
+      setOperation('');
     }
   }
 
-  const handleEquals = () => {
+  // FUNCTION DIVIDIR 
+    const handleDivisorNumbres = () => {
+      if(firstNumber === '0') {
+        setFirstNumber(String(currentNumber)); //SALVA PRIMEIRO NUMERO
+        setCurrentNumber(''); // LIMPA PARA DIGITAR O PROXIMO
+        setOperation('/')
+      } else {
+        const divisao = Number(firstNumber) / Number(currentNumber);
+        setCurrentNumber(String(divisao));
+        setFirstNumber('0');
+        setOperation('');
 
+      }      
+    }
+
+  //FUNCTION PORCENTAGEM
+  const handlePorcentagemNumbers = () => {
+    if(firstNumber === '0') {
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('');
+      setOperation('%');
+    } else {
+      const porcentagem = Number(firstNumber) * Number(currentNumber / 100);
+      setCurrentNumber(String(porcentagem));
+        setFirstNumber('0');
+        setOperation('');
+    }
+  }
+
+  //FUNCTION IGUAL
+  const handleEquals = () => {
     if(firstNumber !== '0' && operation !== '' && currentNumber !== '0') {
         switch(operation){
           case '+':
@@ -57,8 +100,16 @@ const App = () => {
           case '-':
             handleMinusNumbers();
             break;
+          case 'x':
+            handleMultiplcationNumbers();
+            break; 
+          case '/':
+            handleDivisorNumbres();
+            break;   
+          case '%':
+            handlePorcentagemNumbers();
+            break;  
           default:
-            break;
       }
     } 
   }
@@ -70,9 +121,9 @@ const App = () => {
            <Input value={currentNumber} /> 
               <Row>
                 <Button label="C" onClick={handleOnClear}/>
-                <Button label="%" onClick={() => handleAddNumber('')}/>
-                <Button label="/" onClick={() => handleAddNumber('')}/>
-                <Button label="x" onClick={() => handleAddNumber('')}/>
+                <Button label="%" onClick={handlePorcentagemNumbers}/>
+                <Button label="/" onClick={handleDivisorNumbres}/>
+                <Button label="x" onClick={handleMultiplcationNumbers}/>
               </Row>
               <Row>
                 <Button label="7" onClick={() => handleAddNumber('7')}/>
@@ -91,7 +142,11 @@ const App = () => {
                 <Button label="2" onClick={() => handleAddNumber('2')}/>
                 <Button label="3" onClick={() => handleAddNumber('3')}/>
                 <Button label="=" onClick={handleEquals}/>
-              </Row>   
+              </Row>
+              <Row>
+                <Button label="0" onClick={() => handleAddNumber('0')}/>
+              </Row>
+              
         </Content>
     </Container>
   );

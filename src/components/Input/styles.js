@@ -11,17 +11,18 @@ export const InputContainer = styled.div`
 
   font-size: 40px;
   font-family: 'Roboto';
+  
 
   input {
     display: flex;
     justify-content: flex-end;
     
     width: 100%;
-    height: 70px;
+    height: 50px;
     background-color: #aaffaa;
 
-    border: 0;
     outline: none;
+    border: solid 1px #fff;
 
     padding: 10px;
     text-align: right;
