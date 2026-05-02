@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+//PRIMEIRO COMPONENTE
+export const Container = styled.div` 
     width: 100%;
     height: 100vh;
     background-color: #fafa;
@@ -10,8 +11,24 @@ export const Container = styled.div`
     justify-content: center;
 `
 
+//SEGUNDO COMPONENTE
 export const Content = styled.div`
     background-color: #ffffff;
     width: 30%;
-    min-height: 350px;
+`
+
+//TERCEIRO COMPONENTE
+export const Row = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    aling-items: center;
+`
+
+//QUARTO COMPONENTE
+export const Column = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aling-items: center;
 `

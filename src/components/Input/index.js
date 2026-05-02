@@ -1,10 +1,10 @@
-
 import { InputContainer } from "./styles";
 
-const Input = () => { 
+// disabled para inpedir a entrada do input
+const Input = ({value}) => { 
   return (
     <InputContainer>
-      123456 
+      <input disabled value={value}/> 
     </InputContainer>
   );
 }
